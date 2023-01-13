@@ -1,0 +1,6 @@
+https://open-meteo.com/
+https://openweathermap.org/api
+https://www.weatherapi.com/
+
+Figma:
+https://www.figma.com/file/PdWerjf4XRuUwzdESPBObc/WeatherAppReact?node-id=1%3A2&t=3DJx2pLYWWW3M7xJ-1
