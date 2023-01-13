@@ -1,6 +1,10 @@
+Wetter APIs:
 https://open-meteo.com/
 https://openweathermap.org/api
 https://www.weatherapi.com/
+
+Standort zu Koordinaten API:
+https://developers.google.com/maps/documentation/geocoding/overview
 
 Figma:
 https://www.figma.com/file/PdWerjf4XRuUwzdESPBObc/WeatherAppReact?node-id=1%3A2&t=3DJx2pLYWWW3M7xJ-1
