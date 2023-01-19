@@ -4,6 +4,7 @@
     align-items: flex-start;
     padding: 0px;
     color: black;
-    background-color: aqua;
-    border-style: solid;
+    position: absolute;
+    width: 256px;
+    height: 286px;
 }
