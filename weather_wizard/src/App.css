@@ -7,6 +7,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
 
+  --between-space: 4vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -32,17 +33,17 @@
   position: absolute;
   display: flex;
 
-  width: calc(100vw - 2 * 4vh);
+  width: calc(100vw - 2 * var(--between-space));
   height: inherit;
 
-  top: 4vh;
-  bottom: 4vh;
+  top: var(--between-space);
+  bottom: var(--between-space);
 }
 
 .LocationDiv {
   position: absolute;
   width: inherit;
-  height: 45vh;
+  height: calc(46vh - var(--between-space) / 2);
 
   background: #FFFFFF;
   border-radius: 4vh;
@@ -51,7 +52,7 @@
 .TimelineDiv {
   position: absolute;
   width: 65vw;
-  height: calc(35vh - 4vh);
+  height: calc(36vh - var(--between-space));
   left: 0;
   bottom: 0;
   background: #FFFFFF;
@@ -60,8 +61,8 @@
 
 .DescDiv {
   position: absolute;
-  width: calc(100vw - 2*4vh - 65vw - 4vh);
-  height: calc(35vh - 4vh);
+  width: calc(100vw - 2 * var(--between-space) - 65vw - var(--between-space));
+  height: calc(36vh - var(--between-space));
   right: 0;
   bottom: 0;
 
