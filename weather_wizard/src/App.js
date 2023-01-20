@@ -13,7 +13,6 @@ function App() {
           <div className='DescDiv'></div>
         </div>
       </div>
-      Hello
     </div>
   );
 }
