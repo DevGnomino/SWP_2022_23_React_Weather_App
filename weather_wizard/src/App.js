@@ -1,9 +1,10 @@
 import './App.css';
 import DayCard from './components/DayCard';
+import OpenWeather from './api/OpenWeather.js';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App' onLoad={OpenWeather.GetWeatherFromAPI}>
       <div className='Content'>
         <div className='InnerContent'>
           <div className='LocationDiv'>
