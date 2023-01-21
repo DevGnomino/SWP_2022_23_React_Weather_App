@@ -8,14 +8,10 @@ function App() {
   //GetWeatherFromAPI();
 
   return (
-<<<<<<< HEAD
-    <div className='App' onLoad={OpenWeather.GetWeatherFromAPI}>
+    <div className='App'>
       <div className='Header'>
         <h2>weather wizard</h2>
       </div>
-=======
-    <div className='App'>
->>>>>>> d6299d74642397862024f357106ad0dc7e856624
       <div className='Content'>
         <div className='InnerContent'>
           <div className='LocationDiv'>
