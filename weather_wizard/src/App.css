@@ -2,24 +2,25 @@
   --between-space: 4vh;
   --small-div-backround: whitesmoke;
   /* Gute Farbe Gelb:  #e7bc13 */
-  text-align: center;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 1.4rem;
   background-color: rgb(255, 255, 255);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  font-weight: 400;
+  font-size: 2.3em;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
 .Header {
-  color: black;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 12vh;
+  padding-left: 4vh;
 }
 
 .Content {
@@ -31,7 +32,7 @@
   display: flex;
   justify-content: center;
 
-  background: rgb(129, 211, 255);
+  background: lightblue;
   border-radius: 6vh 6vh 0 0;
 }
 
@@ -61,8 +62,7 @@
   box-sizing: border-box;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
 }
 
 .TimelineDiv {
@@ -87,15 +87,5 @@
 }
 
 .App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  color: lightblue;
 }

@@ -11,13 +11,21 @@ function App() {
   return (
     <div className='App'>
       <div className='Header'>
-        <h2>weather wizard</h2>
+        <h1>weather wizard</h1>
       </div>
       <div className='Content'>
         <div className='InnerContent'>
           <div className='LocationDiv'>
             <div className='LocationInnerDiv'>
-              <DayCard test="Hallo" />
+              <DayCard test="Tue" />
+              <DayCard test="Web" />
+              <DayCard test="Thu" />
+              <DayCard test="Fri" />
+              <DayCard test="Sat" />
+              <DayCard test="Sun" />
+              {/*<DayCard test="Mon" />
+              <DayCard test="Tue" /> */}
+
             </div>
           </div>
           <div className='TimelineDiv'></div>
