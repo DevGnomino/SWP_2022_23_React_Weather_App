@@ -25,9 +25,10 @@ function App() {
               <DayCard test="Fri" />
               <DayCard test="Sat" />
               <DayCard test="Sun" />
-              {/*<DayCard test="Mon" />
-              <DayCard test="Tue" /> */}
-
+              <DayCard test="Mon" />
+              <DayCard test="Tue" />
+              {    console.log(new Date(1674726862*1000)) //-(3600*1000)
+              }
             </div>
           </div>
           <div className='TimelineDiv'></div>
