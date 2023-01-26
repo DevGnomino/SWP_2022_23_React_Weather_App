@@ -24,6 +24,6 @@ export default class WeatherAPI {
 
 
   GetDateTime() {
-    console.log(new Date(1674724702*1000)); //-(3600*1000)
+    console.log(new Date(1674726742*1000)); //-(3600*1000)
   }
 }

@@ -54,12 +54,19 @@ h1 {
 
   background-color: var(--small-div-backround);
   border-radius: 4vh;
+  display: flex;
+  align-items: flex-end;
 }
 
 .LocationInnerDiv{
-  width: inherit;
+  min-width: inherit;
   height: calc(35vh + var(--between-space));
   box-sizing: border-box;
+  border-radius: 4vh;
+
+  overflow: auto; /*make div scrollable*/
+  overflow-y: hidden; /*Hide vertical scrollbar*/
+  scrollbar-width: none; /*make scrollbar invisible*/
 
   display: flex;
   justify-content: flex-start;
