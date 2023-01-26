@@ -1,11 +1,12 @@
 import './App.css';
 import DayCard from './components/DayCard';
-import './api/OpenWeather.js';
-import GetWeatherFromAPI from './api/OpenWeather.js';
+//import './api/OpenWeather.js';
+import WeatherAPI from './api/OpenWeather.js';
 
 
 function App() {
-  //GetWeatherFromAPI();
+  //WeatherAPI.GetWeatherFromAPI();
+  var weatherAPI = new WeatherAPI();
 
   return (
     <div className='App'>
