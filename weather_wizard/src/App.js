@@ -7,6 +7,8 @@ import WeatherAPI from './api/OpenWeather.js';
 function App() {
   //WeatherAPI.GetWeatherFromAPI();
   var weatherAPI = new WeatherAPI();
+  var result = Promise.all([weatherAPI.GetWeatherFromAPI()]);
+  console.log(result);
 
   return (
     <div className='App'>
