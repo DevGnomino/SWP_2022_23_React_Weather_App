@@ -1,14 +1,14 @@
 import './App.css';
 import DayCard from './components/DayCard';
-//import './api/OpenWeather.js';
-import WeatherAPI from './api/OpenWeather.js';
-
+import React, { Component } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  //WeatherAPI.GetWeatherFromAPI();
-  var weatherAPI = new WeatherAPI();
-  var result = Promise.all([weatherAPI.GetWeatherFromAPI()]);
-  console.log(result);
+  // const [WeatherData, setText] = useState(null);
+
+  // useEffect(() => {
+  //   setText(get_data());
+  // }, []);
 
   return (
     <div className='App'>
@@ -19,16 +19,14 @@ function App() {
         <div className='InnerContent'>
           <div className='LocationDiv'>
             <div className='LocationInnerDiv'>
-              <DayCard test="Tue" />
-              <DayCard test="Web" />
-              <DayCard test="Thu" />
-              <DayCard test="Fri" />
-              <DayCard test="Sat" />
-              <DayCard test="Sun" />
-              <DayCard test="Mon" />
-              <DayCard test="Tue" />
-              {    console.log(new Date(1674726862*1000)) //-(3600*1000)
-              }
+
+              <DayCard test="HI"></DayCard>
+              {/* <DayCard test="Thu" />
+            <DayCard test="Fri" />
+            <DayCard test="Sat" />
+            <DayCard test="Sun" />
+            <DayCard test="Mon" />
+            <DayCard test="Tue" /> */}
             </div>
           </div>
           <div className='TimelineDiv'></div>
