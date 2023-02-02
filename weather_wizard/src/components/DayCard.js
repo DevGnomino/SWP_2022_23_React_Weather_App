@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./DayCard.module.css"
-import { FaAndroid, FaBeer } from 'react-icons/fa';
+import {FaAndroid} from 'react-icons/fa'
 
 export default function DayCard(props) {
   return (
@@ -8,5 +8,5 @@ export default function DayCard(props) {
         <p>{props.test.name}</p>
         <FaAndroid size={80}></FaAndroid>
     </div>
-  )
+  );
 }
