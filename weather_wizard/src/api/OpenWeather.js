@@ -1,26 +1,19 @@
-export default class WeatherAPI {
-  /*constructor() {
-    this.fullAPIResponse = "";
-    this.GetWeatherFromAPI();
-    //console.log(this.fullAPIResponse);
-  }*/
+export default function GetWeatherFromAPI() {
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  
 
-  async GetWeatherFromAPI() {
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-    
+    //Token einfügen, lat und lon als Parameter übergeben, exclude verwenden
+  const apiResponse = fetch("https://api.openweathermap.org/data/3.0/onecall?lat=47&lon=9&appid=f3646ecb50d236f2655587bc51a330df", requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
 
-      //Token einfügen, lat und lon als Parameter übergeben, exclude verwenden
-    return await fetch("https://api.openweathermap.org/data/3.0/onecall?lat=47&lon=9&appid=f3646ecb50d236f2655587bc51a330df", requestOptions)
-      .then(response => response.json())
-      .catch(error => console.log('error', error));
-    //console.log(this.fullAPIResponse);
-  }
+  return apiResponse;
+  //console.log(this.fullAPIResponse);
+}
 
-
-  GetDateTime() {
-    console.log(new Date(1674726742*1000)); //-(3600*1000)
-  }
+export function GetDateTime() {
+  console.log(new Date(1674726742*1000)); //-(3600*1000)
 }

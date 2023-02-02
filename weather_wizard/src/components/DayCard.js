@@ -5,7 +5,7 @@ import { FaAndroid, FaBeer } from 'react-icons/fa';
 export default function DayCard(props) {
   return (
     <div className={styles.card}>
-        <p>{props.test}</p>
+        <p>{props.test.name}</p>
         <FaAndroid size={80}></FaAndroid>
     </div>
   )
