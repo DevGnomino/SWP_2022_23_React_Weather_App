@@ -4,7 +4,7 @@ export default async function GetWeatherFromAPI() {
     redirect: 'follow'
   };
   
-  const res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Bregenz,at&appid=06e572964e1e549dffb981af5fe641ff", requestOptions)
+  const res = await fetch("https://api.openweathermap.org/data/3.0/onecall?lat=47.50311&lon=9.7471&exclude=minutely&appid=93235a2363a8ed97a74f27111965409e&units=metric", requestOptions)
       .catch(err => console.log(err.message));
   if (!res) return "";
   return await res.json();
