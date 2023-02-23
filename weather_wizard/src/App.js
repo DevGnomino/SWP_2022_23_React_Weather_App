@@ -6,11 +6,7 @@ import React, { useEffect, useState } from "react";
 import GetWeatherFromAPI from './api/OpenWeather';
 
 function App() {
-
   const [fetchData, setPage] = useState([]);
-
-
-
 
   useEffect(() => {
     (async () => {
@@ -43,5 +39,3 @@ function App() {
 }
 
 export default App;
-
-
