@@ -5,9 +5,6 @@ import { WeatherDetails } from './components/DayCard';
 //import './api/OpenWeather.js';
 //import GetWeatherFromAPI from './api/OpenWeather.js';
 import GetWeatherFromAPI from './api/OpenWeather';
-import WeatherInfo from './components/WeatherInfo';
-
-
 
 function App() {
 
@@ -55,5 +52,3 @@ function App() {
 }
 
 export default App;
-
-

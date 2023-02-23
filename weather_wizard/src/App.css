@@ -1,15 +1,25 @@
 .App {
-  --between-space: 4vh;
+  --between-space: 3vh;
   --small-div-backround: whitesmoke;
+  --basecolor: #1b1a1f;
+  --basecolorlight: #222328;
+  --blueishgrey: #30333c;
+  --blueishgreylight: #404656;
+  --blue: #324576;
+  --bluefont: #c3c3c3;
+  --violet: #553e58;
+  --violetfont: #fae0fb;
+
   /* Gute Farbe Gelb:  #e7bc13 */
   min-height: 100vh;
   font-size: 1.4rem;
-  background-color: rgb(255, 255, 255);
+  color: var(--violetfont);
+  background-color: var(--violet);
 }
 
 h1 {
   font-weight: 400;
-  font-size: 2.3em;
+  font-size: 8vmin;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
@@ -32,7 +42,7 @@ h1 {
   display: flex;
   justify-content: center;
 
-  background: lightblue;
+  background: var(--violet);
   border-radius: 6vh 6vh 0 0;
 }
 
@@ -51,16 +61,18 @@ h1 {
   position: absolute;
   width: inherit;
   height: calc(46vh - var(--between-space) / 2);
+  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.575);
 
   background-color: var(--small-div-backround);
   border-radius: 4vh;
   display: flex;
   align-items: flex-end;
+  background-color: var(--basecolor);
 }
 
 .LocationInnerDiv{
   min-width: inherit;
-  height: calc(35vh + var(--between-space));
+  /* height: calc(35vh - var(--between-space)); */
   box-sizing: border-box;
   border-radius: 4vh;
 
@@ -75,22 +87,25 @@ h1 {
 .TimelineDiv {
   position: absolute;
   width: 65vw;
-  height: calc(36vh - var(--between-space));
+  height: calc(37vh - var(--between-space));
   left: 0;
   bottom: 0;
-  background-color: var(--small-div-backround);
+
   border-radius: 4vh;
+  background-color: var(--basecolor);
+  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.575);
 }
 
 .DescDiv {
   position: absolute;
-  width: calc(100vw - 2 * var(--between-space) - 65vw - var(--between-space));
-  height: calc(36vh - var(--between-space));
+  width: calc(100vw - 2 * var(--between-space) - 65.5vw - var(--between-space));
+  height: calc(37vh - var(--between-space));
   right: 0;
   bottom: 0;
 
-  background-color: var(--small-div-backround);
   border-radius: 4vh;
+  background-color: var(--basecolor);
+  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.575);
 }
 
 .App-link {
