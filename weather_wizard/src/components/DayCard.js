@@ -2,12 +2,29 @@ import React from 'react'
 import styles from "./DayCard.module.css"
 import { FaAndroid } from 'react-icons/fa'
 
+
+export function WeatherDetails(fetchData, info)
+{
+  console.log(fetchData.daily[info]);
+  let desc = fetchData.daily[info].weather[0].description;
+  const descSplitted = desc.split(" ");
+  desc = "";
+  for (let i = 0; i < descSplitted.length; i++) {
+    desc += descSplitted[i][0].toUpperCase() + descSplitted[i].substr(1) + " "; 
+  }
+  
+  return <div className='DescDiv'> 
+      <p>{"Description: "+ desc}</p>
+    </div>; 
+}
+
 export default function DayCard(props) {
   // let dateTime = new Date(props.dt);
+
   try {
 
     return (
-      <div className={styles.Card}>
+      <div className={styles.Card} onClick={props.onClick(props.keyUsable)}>
         <div className={styles.WeatherDate}>
           {/* <p>{dateTime.toISOString()}</p> */}
         </div>

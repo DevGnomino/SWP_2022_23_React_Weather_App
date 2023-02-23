@@ -1,16 +1,17 @@
 import './App.css';
+import React, { useEffect, useState } from "react";
 import DayCard from './components/DayCard';
+import { WeatherDetails } from './components/DayCard';
 //import './api/OpenWeather.js';
 //import GetWeatherFromAPI from './api/OpenWeather.js';
-import React, { useEffect, useState } from "react";
 import GetWeatherFromAPI from './api/OpenWeather';
+import WeatherInfo from './components/WeatherInfo';
+
+
 
 function App() {
 
   const [fetchData, setPage] = useState([]);
-
-
-
 
   useEffect(() => {
     (async () => {
@@ -18,26 +19,35 @@ function App() {
     })();
   }, []);
 
+  //Click on daycards
+  const [dayClicked, setClicked] = useState(0);
+  
+  function HandleDayCardClick(dayIndex) {
+    return function() {
+      console.log(dayIndex);
+      setClicked(dayIndex);
+    }
+  };
+
   try {
     return (
       <div className='App'>
         <div className='Header'>
-          <h1>weather wizard</h1>
+          <h1>Weather Wizard</h1>
         </div>
         <div className='Content'>
           <div className='InnerContent'>
             <div className='LocationDiv'>
               <div className='LocationInnerDiv'>
-                {fetchData.daily.map(day => {
-                  return <DayCard data={day}></DayCard>
+                {fetchData.daily.map((day, i) => {
+                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} DayCard/>
                 })}
               </div>
             </div>
             <div className='TimelineDiv'></div>
-            <div className='DescDiv'></div>
+            
+            {WeatherDetails(fetchData, dayClicked)}
           </div>
-          <div className='TimelineDiv'></div>
-          <div className='DescDiv'></div>
         </div>
       </div>
     );
