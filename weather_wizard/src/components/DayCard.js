@@ -36,7 +36,7 @@ export default function DayCard(props) {
     }
 
     function getIcon(IconStr) {
-      let IconSize = 90;
+      let IconSize = 100;
       switch (IconStr.slice(0, 2)) {
         case '01':
           return <WiDaySunny size={IconSize}></WiDaySunny>
@@ -63,7 +63,7 @@ export default function DayCard(props) {
     return (
       <div className={styles.Card} onClick={props.onClick(props.keyUsable)}>
         <div className={styles.WeatherDate}>
-          <p>{props.data.dt}</p>
+          <p>{new Date(props.data.dt * 1000).toDateString()}</p>
         </div>
         <div className={styles.Temp}>
           <div className={styles.DayTemp}>

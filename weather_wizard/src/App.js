@@ -30,7 +30,7 @@ function App() {
     return (
       <div className='App'>
         <div className='Header'>
-          <h1>Weather Wizard</h1>
+          <p>weather wizard</p>
         </div>
         <div className='Content'>
           <div className='InnerContent'>
