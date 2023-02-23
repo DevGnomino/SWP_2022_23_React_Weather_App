@@ -18,7 +18,7 @@ function App() {
     return (
       <div className='App'>
         <div className='Header'>
-          <h1>weather wizard</h1>
+          <p>weather wizard</p>
         </div>
         <div className='Content'>
           <div className='InnerContent'>
