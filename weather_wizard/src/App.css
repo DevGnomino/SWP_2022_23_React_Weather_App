@@ -57,7 +57,7 @@
   position: absolute;
   width: inherit;
   height: calc(46vh - var(--between-space) / 2);
-  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.575);
+  box-shadow: inset 0px 0px 15px 7px rgba(0, 0, 0, 0.2);
 
   background-color: var(--small-div-backround);
   border-radius: 4vh;

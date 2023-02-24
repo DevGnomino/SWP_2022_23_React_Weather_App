@@ -19,35 +19,55 @@ export default function DayCard(props) {
       return Math.round(value * multiplier) / multiplier;
     }
 
+    function formatDate(UnixDate) {
+      let dateStr = new Date(UnixDate * 1000).toLocaleString(
+        "en-US",
+        {
+          weekday: "long",
+          month: "short",
+          day: "2-digit",
+        })
+      let dateArr = dateStr.split(", ");
+      return dateArr
+    }
+
     function getIcon(IconStr) {
       let IconSize = 100;
       switch (IconStr.slice(0, 2)) {
         case '01':
-          return <WiDaySunny size={IconSize}></WiDaySunny>
+          return <WiDaySunny size={IconSize}></WiDaySunny>;
         case '02':
-          return <WiDaySunnyOvercast size={IconSize}></WiDaySunnyOvercast>
+          return <WiDaySunnyOvercast size={IconSize}></WiDaySunnyOvercast>;
         case '03':
-          return <WiDayCloudy size={IconSize}></WiDayCloudy>
+          return <WiDayCloudy size={IconSize}></WiDayCloudy>;
         case '04':
-          return <WiCloud size={IconSize}></WiCloud>
+          return <WiCloud size={IconSize}></WiCloud>;
         case '09':
-          return <WiCloudy size={IconSize}></WiCloudy>
+          return <WiCloudy size={IconSize}></WiCloudy>;
         case '10':
-          return <WiShowers size={IconSize}></WiShowers>
+          return <WiShowers size={IconSize}></WiShowers>;
         case '11':
-          return <WiRain size={IconSize}></WiRain>
+          return <WiRain size={IconSize}></WiRain>;
         case '13':
-          return <WiSnow size={IconSize}></WiSnow>
+          return <WiSnow size={IconSize}></WiSnow>;
         case '50':
-          return <WiFog size={IconSize}></WiFog>
+          return <WiFog size={IconSize}></WiFog>;
+        default:
+          console.log("switch case error");
       }
       return;
     }
 
+    let splitDate = formatDate(props.data.dt);
+
     return (
       <div className={styles.Card}>
         <div className={styles.WeatherDate}>
-          <p>{new Date(props.data.dt * 1000).toDateString()}</p>
+          <p id={styles.Day}>{splitDate[0]}</p>
+          <p id={styles.Date}>{splitDate[1]}</p>
+        </div>
+        <div className={styles.WeatherIcon}>
+          {getIcon(props.data.weather[0].icon)}
         </div>
         <div className={styles.Temp}>
           <div className={styles.DayTemp}>
@@ -65,9 +85,7 @@ export default function DayCard(props) {
             <p>°C</p>
           </div>
         </div>
-        <div className={styles.WeatherIcon}>
-          {getIcon(props.data.weather[0].icon)}
-        </div>
+
       </div>
     );
   } catch (error) { console.log(error) }
