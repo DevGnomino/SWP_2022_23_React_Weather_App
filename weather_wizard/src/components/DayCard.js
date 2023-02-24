@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from "./DayCard.module.css";
+import React from 'react'
+import styles from "./DayCard.module.css"
 import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowers, WiRain, WiSnow, WiFog } from "react-icons/wi";
 // Weather Icons:
 // 01 - WiDaySunny
@@ -12,7 +12,23 @@ import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowe
 // 13 - WiSnow
 // 50 - WiFog
 
+export function WeatherDetails(fetchData, info)
+{
+  console.log(fetchData.daily[info]);
+  let desc = fetchData.daily[info].weather[0].description;
+  const descSplitted = desc.split(" ");
+  desc = "";
+  for (let i = 0; i < descSplitted.length; i++) {
+    desc += descSplitted[i][0].toUpperCase() + descSplitted[i].substr(1) + " "; 
+  }
+  
+  return <div className='DescDiv'> 
+      <p>{"Description: "+ desc}</p>
+    </div>; 
+}
+
 export default function DayCard(props) {
+  // let dateTime = new Date(props.dt);
   try {
     function round(value, precision) {
       let multiplier = Math.pow(10, precision || 0);
@@ -61,7 +77,7 @@ export default function DayCard(props) {
     let splitDate = formatDate(props.data.dt);
 
     return (
-      <div className={styles.Card}>
+      <div className={styles.Card} onClick={props.onClick(props.keyUsable)}>
         <div className={styles.WeatherDate}>
           <p id={styles.Day}>{splitDate[0]}</p>
           <p id={styles.Date}>{splitDate[1]}</p>
