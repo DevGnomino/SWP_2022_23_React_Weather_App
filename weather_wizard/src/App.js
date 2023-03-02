@@ -1,10 +1,11 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import DayCard from './components/DayCard';
-import { WeatherDetails } from './components/DayCard';
+import WeatherDetails from './components/WeatherDetails';
 //import './api/OpenWeather.js';
 //import GetWeatherFromAPI from './api/OpenWeather.js';
 import GetWeatherFromAPI from './api/OpenWeather';
+import Timeline from './components/Timeline'
 
 function App() {
 
@@ -41,9 +42,9 @@ function App() {
                 })}
               </div>
             </div>
-            <div className='TimelineDiv'></div>
+            <Timeline data={fetchData} />
             
-            {WeatherDetails(fetchData, dayClicked)}
+            <WeatherDetails fetchData={fetchData} info={dayClicked} />
           </div>
         </div>
       </div>
