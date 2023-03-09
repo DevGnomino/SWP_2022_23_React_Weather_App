@@ -1,0 +1,25 @@
+.graphs {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+.staticGraph {
+    z-index: 1;
+    width: 0.1vw;    
+}
+.dataGraph {
+    z-index: 2;
+
+    
+    min-width: inherit;
+    /* height: calc(35vh - var(--between-space)); */
+    box-sizing: border-box;
+    border-radius: 4vh;
+
+    overflow: auto; /*make div scrollable*/
+    overflow-y: hidden; /*Hide vertical scrollbar*/
+    scrollbar-width: none; /*make scrollbar invisible*/
+
+    display: flex;
+    justify-content: flex-start;
+}

@@ -1,11 +1,15 @@
 import React from 'react'
 import styles from "./Timeline.module.css"
 import { FaAndroid } from 'react-icons/fa'
+import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowers, WiRain, WiSnow, WiFog } from "react-icons/wi";
+//import Graph from './Graph_CanvasJS'
+import "react-vis/dist/style.css";
+import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 
 export default function Timeline(props) {
     
 
-  /*function getIcon(IconStr) {
+  function getIcon(IconStr) {
     let IconSize = 100;
     switch (IconStr.slice(0, 2)) {
       case '01':
@@ -30,15 +34,63 @@ export default function Timeline(props) {
         console.log("switch case error");
     }
     return;
-  }*/
+  }  
+
+  function formatDate(UnixDate) {
+    let dateStr = new Date(UnixDate * 1000); 
+    dateStr = dateStr.toLocaleString(
+      "en-US",
+      {
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    let dateArr = dateStr.split(", ");
+    return dateArr
+  }
+
+ 
+  let minData = Infinity;
+  let maxData = 0;
+  let mappedData = props.data.hourly.map((item, index) => {
+    if(item.temp > maxData) {
+      maxData=item.temp;
+    }
+    else if(item.temp < minData) {
+      minData=item.temp;
+    }
+    return {x:index, y:item.temp};
+  })
+
+  const yRange = [minData-1,maxData+1];
+
 
   return (
     <div className='TimelineDiv'>
-      {() => {
-        for(let i=0;i<48;i++) {
-          return <p>props.data.hourly[i]</p>;
-        }
-      }}
+      <div className={styles.graphs}>
+          <div className={styles.staticGraph}>
+            <XYPlot width={2000} height={250} yDomain={yRange}>
+              <LineSeries
+                  data={[ 
+                    {x: 0, y: 0}
+                  ]}/>
+              <YAxis hideLine style={{
+                  ticks: {stroke: '#1b1a1f'},
+                  text: {stroke: 'none', fill: '#6b6b76', fontWeight: 600}
+              }} />
+            </XYPlot>
+          </div>
+          <div className={styles.dataGraph}>
+              <XYPlot width={2000} height={250} yDomain={yRange}>
+                  <LineSeries
+                      data={mappedData}/>
+                  <XAxis hideLine tickFormat={function tickFormat(d, index) {                        
+                      return formatDate(props.data.hourly[index].dt)[0];
+                  }} />
+                  <YAxis hideLine hideTicks />
+              </XYPlot>
+          </div>
+        </div>
     </div>
   );
 }

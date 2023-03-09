@@ -3,7 +3,7 @@ import style from './WeatherDetails.module.css'
 
 export default function WeatherDetails(props)
 {
-    console.log(props.fetchData.daily[props.info]);
+    //console.log(props.fetchData.daily[props.info]);
     let desc = props.fetchData.daily[props.info].weather[0].description;
     const descSplitted = desc.split(" ");
     desc = "";
