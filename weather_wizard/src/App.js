@@ -1,8 +1,9 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import DayCard from './components/DayCard';
-import { WeatherDetails } from './components/DayCard';
+import WeatherDetails from './components/WeatherDetails';
 import GetWeatherFromAPI from './api/OpenWeather';
+import Timeline from './components/Timeline'
 import SearchBar from './components/SearchBar';
 
 
@@ -55,8 +56,8 @@ function App() {
                 })}
               </div>
             </div>
-            <div className='TimelineDiv'></div>
-            {WeatherDetails(weatherData, dayClicked)}
+            <Timeline data={fetchData} />
+            <WeatherDetails fetchData={weatherData} info={dayClicked} />
           </div>
         </div>
       </div>

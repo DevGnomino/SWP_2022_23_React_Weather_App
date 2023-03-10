@@ -12,20 +12,6 @@ import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowe
 // 13 - WiSnow
 // 50 - WiFog
 
-export function WeatherDetails(fetchData, info) {
-  console.log(fetchData.daily[info]);
-  let desc = fetchData.daily[info].weather[0].description;
-  const descSplitted = desc.split(" ");
-  desc = "";
-  for (let i = 0; i < descSplitted.length; i++) {
-    desc += descSplitted[i][0].toUpperCase() + descSplitted[i].substr(1) + " ";
-  }
-
-  return <div className='DescDiv'>
-    <p>{"Description: " + desc}</p>
-  </div>;
-}
-
 export default function DayCard(props) {
   try {
     const round = (value, precision) => {
