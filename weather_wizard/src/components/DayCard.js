@@ -13,14 +13,13 @@ import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowe
 // 50 - WiFog
 
 export default function DayCard(props) {
-  // let dateTime = new Date(props.dt);
   try {
-    function round(value, precision) {
+    const round = (value, precision) => {
       let multiplier = Math.pow(10, precision || 0);
       return Math.round(value * multiplier) / multiplier;
     }
 
-    function formatDate(UnixDate) {
+    const formatDate = (UnixDate) => {
       let dateStr = new Date(UnixDate * 1000).toLocaleString(
         "en-US",
         {
@@ -32,7 +31,7 @@ export default function DayCard(props) {
       return dateArr
     }
 
-    function getIcon(IconStr) {
+    const getIcon = (IconStr) => {
       let IconSize = 100;
       switch (IconStr.slice(0, 2)) {
         case '01':
@@ -86,7 +85,6 @@ export default function DayCard(props) {
             <p>°C</p>
           </div>
         </div>
-
       </div>
     );
   } catch (error) { console.log(error) }

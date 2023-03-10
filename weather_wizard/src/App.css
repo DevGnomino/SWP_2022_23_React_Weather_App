@@ -1,6 +1,6 @@
 .App {
   --between-space: 3vh;
-  --small-div-backround: whitesmoke;
+  --font-color: #ebe2ec;
   --basecolor: #1b1a1f;
   --basecolorlight: #222328;
   --blueishgrey: #30333c;
@@ -15,6 +15,10 @@
   font-size: 1.4rem;
   color: var(--violetfont);
   background-color: var(--violet);
+  color: var(--font-color);
+
+  cursor: default;
+  user-select: none;
 }
 
 .Header {
@@ -66,6 +70,12 @@
   background-color: var(--basecolor);
 }
 
+.LocationSearchDiv{
+  position: absolute;
+  height: 10vh;
+  top: 0;
+}
+
 .LocationInnerDiv{
   min-width: inherit;
   /* height: calc(35vh - var(--between-space)); */
@@ -99,6 +109,9 @@
   height: calc(37vh - var(--between-space));
   right: 0;
   bottom: 0;
+  padding-left: 3vh;
+  padding-right: 3vh;
+  box-sizing: border-box;
 
   border-radius: 4vh;
   background-color: var(--basecolor);
