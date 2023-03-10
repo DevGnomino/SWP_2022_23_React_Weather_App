@@ -5,12 +5,9 @@
 }
 .staticGraph {
     z-index: 1;
-    width: 0.1vw;    
+    width: 0.1vw; 
 }
-.dataGraph {
-    z-index: 2;
-
-    
+.scrollable {
     min-width: inherit;
     /* height: calc(35vh - var(--between-space)); */
     box-sizing: border-box;
@@ -21,5 +18,21 @@
     scrollbar-width: none; /*make scrollbar invisible*/
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; 
+    flex-direction: column;
+
+}
+.dataGraph {
+    z-index: 2;      
+}
+.icons {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 2000px;
+    padding-left: 29px;
+    top: -10px    
+}
+.icons > * {
+    margin-right: 21.5px;
 }

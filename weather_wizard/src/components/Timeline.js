@@ -10,7 +10,7 @@ export default function Timeline(props) {
     
 
   function getIcon(IconStr) {
-    let IconSize = 100;
+    let IconSize = 20;
     switch (IconStr.slice(0, 2)) {
       case '01':
         return <WiDaySunny size={IconSize}></WiDaySunny>;
@@ -64,33 +64,52 @@ export default function Timeline(props) {
 
   const yRange = [minData-1,maxData+1];
 
+  const graphWidth = 2000;
+  const graphHeight = 230;
+
+  /*<div className={styles.icons}>
+    
+  </div>*/
+
+  console.log(mappedData);
 
   return (
     <div className='TimelineDiv'>
       <div className={styles.graphs}>
-          <div className={styles.staticGraph}>
-            <XYPlot width={2000} height={250} yDomain={yRange}>
+        <div className={styles.staticGraph}>
+          <XYPlot width={graphWidth} height={graphHeight} yDomain={yRange}>
+            <LineSeries
+              data={[ 
+                {x: 0, y: 0}
+              ]}/>
+            <YAxis hideLine style={{
+              ticks: {stroke: '#1b1a1f'},
+              text: {stroke: 'none', fill: '#6b6b76', fontWeight: 600}
+            }} />
+          </XYPlot>
+        </div>
+        
+        <div className={styles.scrollable}>
+          <div className={styles.dataGraph}>
+            <XYPlot width={graphWidth} height={graphHeight} yDomain={yRange}>
               <LineSeries
-                  data={[ 
-                    {x: 0, y: 0}
-                  ]}/>
-              <YAxis hideLine style={{
-                  ticks: {stroke: '#1b1a1f'},
-                  text: {stroke: 'none', fill: '#6b6b76', fontWeight: 600}
+                color='#fae0fb'
+                data={mappedData}/>
+              <XAxis hideLine tickFormat={function tickFormat(index) {
+                //console.log(index + " " + formatDate(props.data.hourly[index].dt)[0]);
+                return formatDate(props.data.hourly[index].dt)[0];
               }} />
             </XYPlot>
           </div>
-          <div className={styles.dataGraph}>
-              <XYPlot width={2000} height={250} yDomain={yRange}>
-                  <LineSeries
-                      data={mappedData}/>
-                  <XAxis hideLine tickFormat={function tickFormat(d, index) {                        
-                      return formatDate(props.data.hourly[index].dt)[0];
-                  }} />
-                  <YAxis hideLine hideTicks />
-              </XYPlot>
+
+          <div className={styles.icons}>
+            {props.data.hourly.map((hourlyData) => {
+              //console.log(hourlyData.weather[0].icon);
+              return getIcon(hourlyData.weather[0].icon);
+            })}
           </div>
         </div>
+      </div>
     </div>
   );
 }
