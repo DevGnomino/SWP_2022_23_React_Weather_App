@@ -85,7 +85,6 @@ export default function DayCard(props) {
             <p>°C</p>
           </div>
         </div>
-
       </div>
     );
   } catch (error) { console.log(error) }

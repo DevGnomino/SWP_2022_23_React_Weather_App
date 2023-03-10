@@ -8,7 +8,6 @@ import SearchBar from './components/SearchBar';
 
 
 function App() {
-
   const [weatherData, setWeatherData] = useState([]);
 
   //initial data loading
@@ -56,7 +55,7 @@ function App() {
                 })}
               </div>
             </div>
-            <Timeline data={fetchData} />
+            <Timeline data={weatherData} />
             <WeatherDetails fetchData={weatherData} info={dayClicked} />
           </div>
         </div>
