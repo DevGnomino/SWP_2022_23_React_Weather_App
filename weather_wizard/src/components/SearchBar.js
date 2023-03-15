@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import GetGeoLoc from '../api/GeoAPI';
 
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [locData, setLocData] = useState([]);
 
@@ -19,10 +19,10 @@ export default function SearchBar() {
     }
   }
 
-  const locClick = (lat, lon) => {
-    console.log("New Location: " + lat + " + " + lon);
-    //SOMEHOW CHANGE App.js STATE!
-  };  
+  // const locClick = (lat, lon) => {
+  //   console.log("New Location: " + lat + " + " + lon);
+  //   //SOMEHOW CHANGE App.js STATE!
+  // };  
 
   const SearchFunc = async () => {
     if (searchTerm !== "") {
@@ -38,9 +38,10 @@ export default function SearchBar() {
   const getFoundLocations = () => {
     let response = [];
     locData.map((loc, i) => {
-      response.push(<div key={i} onClick={() => locClick(loc.lat, loc.lon)} className={styles.SingleLocDiv}>{loc.name}, {loc.state}, {loc.country}</div>)
+      response.push(<div key={i} onClick={() => {props.onLocClick(loc.lat,loc.lon)}} className={styles.SingleLocDiv}>{loc.name}, {loc.state}, {loc.country}</div>)
     })
     return response; 
+    //() => locClick(loc.lat, loc.lon)
   }
 
   return (

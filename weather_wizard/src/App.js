@@ -47,7 +47,7 @@ function App() {
           <div className='InnerContent'>
             <div className='LocationDiv'>
               <div className='LocationSearchDiv'>
-                <SearchBar></SearchBar>
+                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData}></SearchBar>
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
