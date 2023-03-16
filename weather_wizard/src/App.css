@@ -103,21 +103,6 @@
 
 }
 
-.DescDiv {
-  position: absolute;
-  width: calc(100vw - 2 * var(--between-space) - 65.5vw - var(--between-space));
-  height: calc(37vh - var(--between-space));
-  right: 0;
-  bottom: 0;
-  padding-left: 3vh;
-  padding-right: 3vh;
-  box-sizing: border-box;
-
-  border-radius: 4vh;
-  background-color: var(--basecolor);
-  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.575);
-}
-
 .App-link {
   color: lightblue;
 }
