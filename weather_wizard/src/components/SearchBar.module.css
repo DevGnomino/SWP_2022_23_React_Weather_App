@@ -2,6 +2,11 @@
     color: #ebe2ec;
 }
 
+.LocHeader {
+    display:flex;
+    flex-direction: row;
+}
+
 .SearchDiv {
     z-index: 100;
     position: relative;
@@ -133,3 +138,24 @@
     transition: color 0.2s ease-in-out;
 }
 
+.CurrentLoc {    
+    height: 5vh;
+    margin: 2.5vh;
+    border-radius: 2vh;
+    box-sizing: border-box;
+    background-color: #313135;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 2vmin;
+    padding-right: 2vmin;
+    font-size: 2.5vmin;
+
+    display: flex;
+    align-items: center;
+}
+
+.LocName {
+    color: #ebe2ec;
+}

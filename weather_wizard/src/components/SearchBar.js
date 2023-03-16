@@ -38,7 +38,7 @@ export default function SearchBar(props) {
   const getFoundLocations = () => {
     let response = [];
     locData.map((loc, i) => {
-      response.push(<div key={i} onClick={() => {props.onLocClick(loc.lat,loc.lon)}} className={styles.SingleLocDiv}>{loc.name}, {loc.state}, {loc.country}</div>)
+      response.push(<div key={i} onClick={() => {props.onLocClick(loc.name + ', ' + loc.state + ', '+ loc.country, loc.lat, loc.lon)}} className={styles.SingleLocDiv}>{loc.name}, {loc.state}, {loc.country}</div>)
     })
     return response; 
     //() => locClick(loc.lat, loc.lon)
@@ -54,6 +54,7 @@ export default function SearchBar(props) {
         <div className={styles.LocResultDiv}>{getFoundLocations()}</div>
       </div >
       <div className={styles.CurrentLoc}>
+        <p className={styles.LocName}>{props.locName}</p>
       </div>
     </div>
   )

@@ -9,18 +9,21 @@ import SearchBar from './components/SearchBar';
 
 function App() {
   const [weatherData, setWeatherData] = useState([]);
+  const [locName, setLocName] = useState("Stadt Bregenz, Vorarlberg, AT");
+  
 
   //initial data loading
   useEffect(() => {
     (async () => {
-      let lat = 49;
-      let lon = 9;
+      let lat = 47.5025779;
+      let lon = 9.7472924;
       setWeatherData(await GetWeatherFromAPI(lat, lon));
     })();
   }, []);
 
   //Data loading if location is changed through Search Bar
-  const LoadNewLocData = async (lat, lon) => { 
+  const LoadNewLocData = async (name, lat, lon) => { 
+    setLocName(name);
     console.log("fetching data....");
     let data = await GetWeatherFromAPI(lat, lon);
     setWeatherData(data);
@@ -47,7 +50,7 @@ function App() {
           <div className='InnerContent'>
             <div className='LocationDiv'>
               <div className='LocationSearchDiv'>
-                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData}></SearchBar>
+                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName}></SearchBar>
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {

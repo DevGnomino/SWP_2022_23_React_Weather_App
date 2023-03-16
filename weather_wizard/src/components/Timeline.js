@@ -71,7 +71,7 @@ export default function Timeline(props) {
     
   </div>*/
 
-  console.log(mappedData);
+  //console.log(mappedData);
 
   return (
     <div className='TimelineDiv'>
