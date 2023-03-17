@@ -77,7 +77,7 @@
 }
 
 .LocationInnerDiv{
-  min-width: inherit;
+  width: inherit;
   /* height: calc(35vh - var(--between-space)); */
   box-sizing: border-box;
   border-radius: 4vh;

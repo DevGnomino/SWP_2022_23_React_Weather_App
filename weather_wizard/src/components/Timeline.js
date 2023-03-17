@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from "./Timeline.module.css"
-import { FaAndroid } from 'react-icons/fa'
 import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowers, WiRain, WiSnow, WiFog } from "react-icons/wi";
 //import Graph from './Graph_CanvasJS'
 import "react-vis/dist/style.css";
