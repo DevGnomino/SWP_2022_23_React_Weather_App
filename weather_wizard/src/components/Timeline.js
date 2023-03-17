@@ -74,9 +74,9 @@ export default function Timeline(props) {
   //console.log(mappedData);
 
   return (
-    <div className='TimelineDiv'>
-      <div className={styles.graphs}>
-        <div className={styles.staticGraph}>
+    <div className={styles.TimelineDiv}>
+      <div className={styles.Graphs}>
+        <div className={styles.StaticGraph}>
           <XYPlot width={graphWidth} height={graphHeight} yDomain={yRange}>
             <LineSeries
               data={[ 
@@ -89,8 +89,8 @@ export default function Timeline(props) {
           </XYPlot>
         </div>
         
-        <div className={styles.scrollable}>
-          <div className={styles.dataGraph}>
+        <div className={styles.Scrollable}>
+          <div className={styles.DataGraph}>
             <XYPlot width={graphWidth} height={graphHeight} yDomain={yRange}>
               <LineSeries
                 color='#fae0fb'
@@ -102,7 +102,7 @@ export default function Timeline(props) {
             </XYPlot>
           </div>
 
-          <div className={styles.icons}>
+          <div className={styles.Icons}>
             {props.data.hourly.map((hourlyData) => {
               //console.log(hourlyData.weather[0].icon);
               return getIcon(hourlyData.weather[0].icon);
