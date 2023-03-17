@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styles from "./SearchBar.module.css";
-import { BiSearch } from "react-icons/bi";
+import { BiX, BiSearch } from "react-icons/bi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import GetGeoLoc from '../api/GeoAPI';
 
@@ -21,7 +21,7 @@ export default function SearchBar(props) {
     }
   }
 
-  const locChosen = () => {
+  const ResetFunc = () => {
     //change css state to hide result div
     if (cssState === styles.Show) {
       console.log("changing css state to dont show!");
@@ -55,7 +55,7 @@ export default function SearchBar(props) {
   const getFoundLocations = () => {
     let response = [];
     locData.map((loc, i) => {
-      response.push(<div key={i} onClick={() => { locChosen(); props.onLocClick(loc.name + ', ' + loc.state + ', ' + loc.country, loc.lat, loc.lon) }} className={styles.SingleLocDiv}>{loc.name}, {loc.state}, {loc.country}</div>)
+      response.push(<div key={i} onClick={() => { ResetFunc(); props.onLocClick(loc.name + ', ' + loc.state + ', ' + loc.country, loc.lat, loc.lon) }} className={styles.SingleLocDiv}>{loc.name}, {loc.state}, {loc.country}</div>)
     })
     return response;
   }
@@ -65,7 +65,8 @@ export default function SearchBar(props) {
     <div className={styles.LocWrapper}>
       <div className={[styles.SearchDiv, cssState].join(' ')}>
         <div className={styles.SearchWrapper}>
-          <input type="text" value={searchTerm} onChange={handleSearchChange} onKeyDown={handleKeyDown} className={styles.SearchBar} placeholder="Search Location"></input>
+          <input type="text" value={searchTerm} onChange={handleSearchChange} onKeyDown={handleKeyDown} className={[styles.SearchBar, cssState].join(' ')} placeholder="Search Location"></input>
+          <div onClick={ResetFunc} className={[styles.CancelIcon, cssState].join(' ')}><BiX></BiX></div>
           <div onClick={SearchFunc} className={styles.SearchIcon}><BiSearch></BiSearch></div>
         </div>
         <div className={[styles.LocResultDiv, cssState].join(' ')}>{getFoundLocations()}</div>

@@ -3,6 +3,10 @@
     color: #ebe2ec;
 }
 
+*:focus {
+    outline: none;
+}
+
 .LocWrapper {
     display: flex;
     justify-content: space-between;
@@ -33,7 +37,7 @@
     opacity: 1;
 }
 
-.SearchDiv.Hide{
+.SearchDiv.Hide {
     height: 5vh;
 }
 
@@ -66,24 +70,23 @@
     height: 5vh;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: 2vmin;
+    padding-left: 2.2vmin;
     padding-right: 2vmin;
     font-size: 2.5vmin;
     color: #ebe2ec;
 
 }
 
-*:focus {
-    outline: none;
+.SearchBar.Show{
+    width: calc((25vw - 6vh));
 }
+
 
 .SearchIcon {
     z-index: 100;
     position: relative;
-
     height: 5vh;
     width: 6vh;
-    color: #ebe2ec;
 
     display: flex;
     justify-content: center;
@@ -99,6 +102,33 @@
     -ms-transition: color 0.2s ease-in-out;
     -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out;
+}
+
+.CancelIcon.Show {
+    color: #ebe2ec;
+    z-index: 100;
+    position: relative;
+    height: 5vh;
+    width: 6vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CancelIcon:hover {
+    color: #553e58;
+    cursor: pointer;
+
+    -webkit-transition: color 0.2s ease-in-out;
+    -moz-transition: color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+.CancelIcon.Hide{
+    display: none;
 }
 
 .LocResultDiv {
@@ -130,7 +160,6 @@
 .LocResultDiv.Show {
     background-color: #313135;
 }
-
 
 .SingleLocDiv {
     position: relative;
