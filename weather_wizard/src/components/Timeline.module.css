@@ -1,13 +1,26 @@
-.graphs {
+.TimelineDiv {
+    position: absolute;
+    width: 65vw;
+    height: calc(37vh - var(--between-space));
+    left: 0;
+    bottom: 0;
+
+    border-radius: 4vh;
+    background-color: var(--basecolor);
+    box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.575);
+}
+.Graphs {
+    width: inherit;
+    
     display: flex;
     position: relative;
     flex-direction: row;
 }
-.staticGraph {
+.StaticGraph {
     z-index: 1;
     width: 0.1vw; 
 }
-.scrollable {
+.Scrollable {
     min-width: inherit;
     /* height: calc(35vh - var(--between-space)); */
     box-sizing: border-box;
@@ -22,10 +35,10 @@
     flex-direction: column;
 
 }
-.dataGraph {
+.DataGraph {
     z-index: 2;      
 }
-.icons {
+.Icons {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -33,6 +46,6 @@
     padding-left: 29px;
     top: -10px    
 }
-.icons > * {
+.Icons > * {
     margin-right: 21.5px;
 }
