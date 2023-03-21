@@ -63,7 +63,7 @@
   height: calc(46vh - var(--between-space) / 2);
   box-shadow: inset 0px 0px 15px 7px rgba(0, 0, 0, 0.2);
 
-  background-color: var(--small-div-backround);
+  /*background-color: var(--small-div-backround);*/
   border-radius: 4vh;
   display: flex;
   align-items: flex-end;
