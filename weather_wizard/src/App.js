@@ -10,7 +10,8 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [locName, setLocName] = useState("Stadt Bregenz, Vorarlberg, AT");
-  
+  const [fullPageSize, setPageSize] = useState({w:1920, h:1080});
+
 
   //initial data loading
   useEffect(() => {
@@ -29,6 +30,17 @@ function App() {
     setWeatherData(data);
   }
 
+  const ResizeHandler = () => {    
+    try {
+      let pageHeight = document.getElementsByClassName('App')[0].clientHeight;
+      let pageWidth = document.getElementsByClassName('App')[0].clientWidth;
+      setPageSize({w: pageWidth, h: pageHeight});
+    } catch (ex) {
+      console.log('App-div is currently unavailable! Please leave a message after the beep.');
+    }
+    setPageSize()
+  }
+
 
   //Click on daycards
   const [dayClicked, setClicked] = useState(0);
@@ -42,7 +54,7 @@ function App() {
 
   try {
     return (
-      <div className='App'>
+      <div className='App' onResize={ResizeHandler}>
         <div className='Header'>
           <p>Weather Wizard</p>
         </div>
@@ -54,7 +66,7 @@ function App() {
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
-                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} DayCard />
+                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} pageSize={fullPageSize} DayCard />
                 })}
               </div>
             </div>

@@ -28,11 +28,12 @@ export default function DayCard(props) {
           day: "2-digit",
         })
       let dateArr = dateStr.split(", ");
-      return dateArr
+      return dateArr;
     }
 
     const getIcon = (IconStr) => {
-      let IconSize = 100;
+      console.log(props.pageSize);
+      let IconSize = props.pageSize.h; //100
       switch (IconStr.slice(0, 2)) {
         case '01':
           return <WiDaySunny size={IconSize}></WiDaySunny>;

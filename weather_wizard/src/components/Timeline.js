@@ -66,17 +66,12 @@ export default function Timeline(props) {
   const graphWidth = 2000;
   const graphHeight = 230;
 
-  /*<div className={styles.icons}>
-    
-  </div>*/
-
-  //console.log(mappedData);
 
   return (
     <div className={styles.TimelineDiv}>
       <div className={styles.Graphs}>
         <div className={styles.StaticGraph}>
-          <XYPlot width={graphWidth} height={graphHeight} yDomain={yRange}>
+          <XYPlot height={graphHeight} yDomain={yRange}>
             <LineSeries
               data={[ 
                 {x: 0, y: 0}
