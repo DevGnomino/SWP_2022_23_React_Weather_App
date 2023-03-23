@@ -9,21 +9,34 @@ import SearchBar from './components/SearchBar';
 
 function App() {
   const [weatherData, setWeatherData] = useState([]);
-  const [locName, setLocName] = useState("Stadt Bregenz, Vorarlberg, AT");
+  const [locName, setLocName] = useState("");
   
-
   //initial data loading
   useEffect(() => {
+    if(localStorage.getItem("loc") && localStorage.getItem("lat") && localStorage.getItem("lon")){
+      setLocName(localStorage.getItem("loc"));
+      var lat = localStorage.getItem("lat");
+      var lon = localStorage.getItem("lon");
+    } else {
+      setLocName("Stadt Bregenz, Vorarlberg, AT");
+      var lat = 47.5025779;
+      var lon = 9.7472924;
+    }
+    
     (async () => {
-      let lat = 47.5025779;
-      let lon = 9.7472924;
       setWeatherData(await GetWeatherFromAPI(lat, lon));
     })();
   }, []);
 
   //Data loading if location is changed through Search Bar
-  const LoadNewLocData = async (name, lat, lon) => { 
-    setLocName(name);
+  const LoadNewLocData = async (loc, lat, lon) => { 
+    setLocName(loc);
+    // Store the last Location
+    localStorage.setItem("loc", loc);
+    localStorage.setItem("lat", lat);
+    localStorage.setItem("lon", lon);
+// localStorage.removeItem("name");
+
     console.log("fetching data....");
     let data = await GetWeatherFromAPI(lat, lon);
     setWeatherData(data);
@@ -50,11 +63,11 @@ function App() {
           <div className='InnerContent'>
             <div className='LocationDiv'>
               <div className='LocationSearchDiv'>
-                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName}></SearchBar>
+                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName}/>
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
-                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} DayCard />
+                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} DayCard/>
                 })}
               </div>
             </div>

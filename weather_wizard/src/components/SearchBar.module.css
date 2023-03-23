@@ -16,7 +16,7 @@
 
 
 .SearchDiv {
-    z-index: 100;
+    z-index: 99;
     position: relative;
 
     margin: 2.5vh;
@@ -47,7 +47,7 @@
 }
 
 .SearchWrapper {
-    z-index: 100;
+    z-index: 99;
     position: relative;
 
     display: flex;
@@ -83,7 +83,7 @@
 
 
 .SearchIcon {
-    z-index: 100;
+    z-index: 101;
     position: relative;
     height: 5vh;
     width: 6vh;
