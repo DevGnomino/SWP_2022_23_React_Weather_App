@@ -87,7 +87,7 @@
 
 .CTemp{
     font-size: 6vmin;
-
+    margin-left: 0.5vh;
     font-weight: lighter;
     display: flex;
     justify-content: left;

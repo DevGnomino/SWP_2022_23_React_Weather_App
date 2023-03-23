@@ -1,6 +1,5 @@
 * {
     --between-space: 3vh;
-    color: #ebe2ec;
 }
 
 *:focus {
@@ -116,7 +115,7 @@
     align-items: center;
 }
 
-.CancelIcon:hover {
+.CancelIcon:hover{
     color: #553e58;
     cursor: pointer;
 

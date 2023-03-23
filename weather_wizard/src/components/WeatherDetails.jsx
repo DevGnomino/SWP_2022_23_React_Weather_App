@@ -1,5 +1,5 @@
 import styles from './WeatherDetails.module.css'
-import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowers, WiRain, WiSnow, WiFog, WiSunrise, WiSunset, WiStrongWind } from "react-icons/wi";
+import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowers, WiRain, WiSnow, WiFog, WiSunrise, WiSunset,WiMoonrise, WiMoonset, WiStrongWind, WiWindDeg, WiHumidity } from "react-icons/wi";
 
 
 const formatDate = (UnixDate) => {
@@ -50,9 +50,12 @@ export default function WeatherDetails(props) {
 
   let sunrise = formatDate(props.fetchData.daily[props.info].sunrise);
   let sunset = formatDate(props.fetchData.daily[props.info].sunset);
+  let moonrise = formatDate(props.fetchData.daily[props.info].moonrise);
+  let moonset = formatDate(props.fetchData.daily[props.info].moonset);
 
-  let windSpeed = props.fetchData.daily[props.info].wind_speed;
-  let windTemp = props.fetchData.daily[props.info].wind_deg;
+  let humidity = props.fetchData.daily[props.info].humidity;
+  let windSpeed = Math.round (props.fetchData.daily[props.info].wind_speed * 3.6 * 10) / 10;
+  let windDir = props.fetchData.daily[props.info].wind_deg;
 
   const iconSize = 50;
 
@@ -64,20 +67,32 @@ export default function WeatherDetails(props) {
           <div className={styles.Description}>{desc}</div>
         </div>
         <div className={styles.Row}>
-          <WiSunrise size={iconSize}></WiSunrise>
-          <div className={styles.Description}>{"Sunrise on " + sunrise}</div>
+          <WiSunrise size={iconSize}/>
+          <div className={styles.Description}>{"Sunrise at " + sunrise}</div>
         </div>
         <div className={styles.Row}>
-          <WiSunset size={iconSize}></WiSunset>
-          <div className={styles.Description}>{"Sunset on " + sunset}</div>
+          <WiSunset size={iconSize}/>
+          <div className={styles.Description}>{"Sunset at " + sunset}</div>
         </div>
         <div className={styles.Row}>
-          <WiStrongWind size={iconSize}></WiStrongWind>
-          <div className={styles.Description}>{"Windspeed: " + windSpeed}</div>
+          <WiMoonrise size={iconSize}/>
+          <div className={styles.Description}>{"Moonrise at " + moonrise}</div>
         </div>
         <div className={styles.Row}>
-          <WiStrongWind size={iconSize}></WiStrongWind>
-          <div className={styles.Description}>{"Wind something: " + windTemp}</div>
+          <WiMoonset size={iconSize}/>
+          <div className={styles.Description}>{"Moonset at " + moonset}</div>
+        </div>
+        <div className={styles.Row}>
+          <WiStrongWind size={iconSize}/>
+          <div className={styles.Description}>{"Windspeed: " + windSpeed + " km/h"}</div>
+        </div>
+        <div className={styles.Row}>
+          <WiWindDeg size={iconSize}/>
+          <div className={styles.Description}>{"Wind direction: " + windDir + "°"}</div>
+        </div>
+        <div className={styles.Row}>
+          <WiHumidity size={iconSize}/>
+          <div className={styles.Description}>{"Humidity: " + humidity + " %"}</div>
         </div>
       </div>
     </div>

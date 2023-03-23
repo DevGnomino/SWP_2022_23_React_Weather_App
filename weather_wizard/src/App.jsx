@@ -67,7 +67,7 @@ function App() {
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
-                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} DayCard/>
+                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day}/>
                 })}
               </div>
             </div>
