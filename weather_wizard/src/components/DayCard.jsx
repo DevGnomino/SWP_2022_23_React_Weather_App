@@ -32,8 +32,7 @@ export default function DayCard(props) {
     }
 
     const getIcon = (IconStr) => {
-      console.log(props.pageSize);
-      let IconSize = props.pageSize.h; //100
+      let IconSize = props.iconSize; //100 //props.pageSize.h / 10
       switch (IconStr.slice(0, 2)) {
         case '01':
           return <WiDaySunny size={IconSize}></WiDaySunny>;

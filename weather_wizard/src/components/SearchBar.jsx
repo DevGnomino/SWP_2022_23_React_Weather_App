@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styles from "./SearchBar.module.css";
 import { BiX, BiSearch } from "react-icons/bi";
 import { MdOutlineLocationOn } from "react-icons/md";
@@ -66,13 +66,13 @@ export default function SearchBar(props) {
       <div className={[styles.SearchDiv, cssState].join(' ')}>
         <div className={styles.SearchWrapper}>
           <input type="text" value={searchTerm} onChange={handleSearchChange} onKeyDown={handleKeyDown} className={[styles.SearchBar, cssState].join(' ')} placeholder="Search Location"></input>
-          <div onClick={ResetFunc} className={[styles.CancelIcon, cssState].join(' ')}><BiX></BiX></div>
-          <div onClick={SearchFunc} className={styles.SearchIcon}><BiSearch></BiSearch></div>
+          <div onClick={ResetFunc} className={[styles.CancelIcon, cssState].join(' ')}><BiX/></div>
+          <div onClick={SearchFunc} className={styles.SearchIcon}><BiSearch/></div>
         </div>
         <div className={[styles.LocResultDiv, cssState].join(' ')}>{getFoundLocations()}</div>
       </div >
       <div className={styles.CurrentLoc}>
-        <MdOutlineLocationOn></MdOutlineLocationOn>
+        <MdOutlineLocationOn/>
         <p className={styles.LocName}>{props.locName}</p>
       </div>
     </div>

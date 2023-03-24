@@ -9,37 +9,62 @@ import SearchBar from './components/SearchBar';
 
 function App() {
   const [weatherData, setWeatherData] = useState([]);
-  const [locName, setLocName] = useState("Stadt Bregenz, Vorarlberg, AT");
-  const [fullPageSize, setPageSize] = useState({w:1920, h:1080});
+  const [locName, setLocName] = useState("");
+  const [iconSize, setIconSize] = useState(100);
 
 
   //initial data loading
   useEffect(() => {
+    if(localStorage.getItem("loc") && localStorage.getItem("lat") && localStorage.getItem("lon")){
+      setLocName(localStorage.getItem("loc"));
+      var lat = localStorage.getItem("lat");
+      var lon = localStorage.getItem("lon");
+    } else {
+      setLocName("Stadt Bregenz, Vorarlberg, AT");
+      var lat = 47.5025779;
+      var lon = 9.7472924;
+    }
+    
     (async () => {
-      let lat = 47.5025779;
-      let lon = 9.7472924;
       setWeatherData(await GetWeatherFromAPI(lat, lon));
     })();
   }, []);
 
   //Data loading if location is changed through Search Bar
-  const LoadNewLocData = async (name, lat, lon) => { 
-    setLocName(name);
+  const LoadNewLocData = async (loc, lat, lon) => { 
+    setLocName(loc);
+    // Store the last Location
+    localStorage.setItem("loc", loc);
+    localStorage.setItem("lat", lat);
+    localStorage.setItem("lon", lon);
+// localStorage.removeItem("name");
+
     console.log("fetching data....");
     let data = await GetWeatherFromAPI(lat, lon);
     setWeatherData(data);
-  }
+  };
 
   const ResizeHandler = () => {    
     try {
-      let pageHeight = document.getElementsByClassName('App')[0].clientHeight;
-      let pageWidth = document.getElementsByClassName('App')[0].clientWidth;
-      setPageSize({w: pageWidth, h: pageHeight});
+      let pageHeight = document.getElementsByClassName('LocationInnerDiv')[0].clientHeight;
+      //let pageWidth = document.getElementsByClassName('LocationInnerDiv')[0].clientWidth;
+      if(pageHeight < 100) {
+        setIconSize(25);
+      }
+      else if(pageHeight < 200) {
+        setIconSize(50);
+      }
+      else if(pageHeight < 250) {
+        setIconSize(75);
+      }
+      else {
+        setIconSize(100);
+      }
+      //console.log("Servus");
     } catch (ex) {
       console.log('App-div is currently unavailable! Please leave a message after the beep.');
     }
-    setPageSize()
-  }
+  };
 
 
   //Click on daycards
@@ -51,10 +76,12 @@ function App() {
       setClicked(dayIndex);
     }
   };
+  
+  window.addEventListener('resize', ResizeHandler);
 
   try {
     return (
-      <div className='App' onResize={ResizeHandler}>
+      <div className='App'>
         <div className='Header'>
           <p>Weather Wizard</p>
         </div>
@@ -62,16 +89,16 @@ function App() {
           <div className='InnerContent'>
             <div className='LocationDiv'>
               <div className='LocationSearchDiv'>
-                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName}></SearchBar>
+                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName}/>
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
-                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} pageSize={fullPageSize} DayCard />
+                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day} iconSize={iconSize} />
                 })}
               </div>
             </div>
             <Timeline data={weatherData} />
-            <WeatherDetails fetchData={weatherData} info={dayClicked} />
+            <WeatherDetails fetchData={weatherData} info={dayClicked} iconSize={iconSize}/>
           </div>
         </div>
       </div>
