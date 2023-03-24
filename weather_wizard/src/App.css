@@ -10,7 +10,6 @@
   --violet: #553e58;
   --violetfont: #fae0fb;
 
-  /* Gute Farbe Gelb:  #e7bc13 */
   min-height: 100vh;
   font-size: 1.4rem;
   color: var(--violetfont);
@@ -22,15 +21,16 @@
 }
 
 .Header {
+  z-index: 100;
   position: fixed;
   width: 100vw;
-  max-height: 12vh;
-  padding-left: 4vh;
+  height: 14vh;
+  padding-top: 2.5vh;
+  display: flex;
+  justify-content: center;
 
-  font-weight: 400;
-  font-size: 9vmin;
-  line-height: 0;
-  top: -2vh;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10vmin;
 }
 
 .Content {

@@ -10,10 +10,12 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [locName, setLocName] = useState("");
-  
+    //Click on daycards
+  const [dayClicked, setClicked] = useState(0);
+
   //initial data loading
   useEffect(() => {
-    if(localStorage.getItem("loc") && localStorage.getItem("lat") && localStorage.getItem("lon")){
+    if (localStorage.getItem("loc") && localStorage.getItem("lat") && localStorage.getItem("lon")) {
       setLocName(localStorage.getItem("loc"));
       var lat = localStorage.getItem("lat");
       var lon = localStorage.getItem("lon");
@@ -22,20 +24,20 @@ function App() {
       var lat = 47.5025779;
       var lon = 9.7472924;
     }
-    
+
     (async () => {
       setWeatherData(await GetWeatherFromAPI(lat, lon));
     })();
   }, []);
 
   //Data loading if location is changed through Search Bar
-  const LoadNewLocData = async (loc, lat, lon) => { 
+  const LoadNewLocData = async (loc, lat, lon) => {
     setLocName(loc);
     // Store the last Location
     localStorage.setItem("loc", loc);
     localStorage.setItem("lat", lat);
     localStorage.setItem("lon", lon);
-// localStorage.removeItem("name");
+    // localStorage.removeItem("name");
 
     console.log("fetching data....");
     let data = await GetWeatherFromAPI(lat, lon);
@@ -43,8 +45,6 @@ function App() {
   }
 
 
-  //Click on daycards
-  const [dayClicked, setClicked] = useState(0);
 
   const HandleDayCardClick = (dayIndex) => {
     return function () {
@@ -56,18 +56,16 @@ function App() {
   try {
     return (
       <div className='App'>
-        <div className='Header'>
-          <p>Weather Wizard</p>
-        </div>
+        <div className='Header'>Weather Wizard</div>
         <div className='Content'>
           <div className='InnerContent'>
             <div className='LocationDiv'>
               <div className='LocationSearchDiv'>
-                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName}/>
+                <SearchBar fetchData={weatherData} onLocClick={LoadNewLocData} locName={locName} />
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
-                  return <DayCard key={i} keyUsable={i} onClick={HandleDayCardClick} data={day}/>
+                  return <DayCard key={i} item={i} onCardClick={HandleDayCardClick} data={day} isActive={dayClicked === i} />
                 })}
               </div>
             </div>

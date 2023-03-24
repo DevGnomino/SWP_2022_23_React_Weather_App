@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./DayCard.module.css"
 import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiCloudy, WiShowers, WiRain, WiSnow, WiFog } from "react-icons/wi";
 // Weather Icons:
@@ -61,7 +61,7 @@ export default function DayCard(props) {
     let splitDate = formatDate(props.data.dt);
 
     return (
-      <div className={styles.Card} onClick={props.onClick(props.keyUsable)}>
+      <div className={[styles.Card, (props.isActive) ? styles.Selected : styles.unSelected].join(' ')} onClick={props.onCardClick(props.item)}>
         <div className={styles.WeatherDate}>
           <p id={styles.Day}>{splitDate[0]}</p>
           <p id={styles.Date}>{splitDate[1]}</p>
