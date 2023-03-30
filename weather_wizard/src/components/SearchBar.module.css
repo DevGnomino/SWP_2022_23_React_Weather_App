@@ -25,10 +25,6 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     opacity: 0.7;
-    -webkit-transition: opacity 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out;
-    -ms-transition: opacity 0.25s ease-in-out;
-    -o-transition: opacity 0.25s ease-in-out;
     transition: opacity 0.25s ease-in-out;
 }
 
@@ -96,10 +92,6 @@
     color: #553e58;
     cursor: pointer;
 
-    -webkit-transition: color 0.2s ease-in-out;
-    -moz-transition: color 0.2s ease-in-out;
-    -ms-transition: color 0.2s ease-in-out;
-    -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out;
 }
 
@@ -119,10 +111,6 @@
     color: #553e58;
     cursor: pointer;
 
-    -webkit-transition: color 0.2s ease-in-out;
-    -moz-transition: color 0.2s ease-in-out;
-    -ms-transition: color 0.2s ease-in-out;
-    -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out;
 }
 
@@ -179,10 +167,6 @@
     color: #553e58;
     cursor: pointer;
 
-    -webkit-transition: color 0.2s ease-in-out;
-    -moz-transition: color 0.2s ease-in-out;
-    -ms-transition: color 0.2s ease-in-out;
-    -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out;
 }
 
