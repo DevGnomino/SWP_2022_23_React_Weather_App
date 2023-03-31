@@ -26,6 +26,7 @@
 
 .Card.Selected {
     opacity: 1;
+    border: solid #ebe2ec;
 }
 
 .Card.unSelected{
