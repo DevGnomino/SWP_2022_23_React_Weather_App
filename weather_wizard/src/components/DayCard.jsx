@@ -28,11 +28,11 @@ export default function DayCard(props) {
           day: "2-digit",
         })
       let dateArr = dateStr.split(", ");
-      return dateArr
+      return dateArr;
     }
 
     const getIcon = (IconStr) => {
-      let IconSize = 100;
+      let IconSize = props.iconSize; //100 //props.pageSize.h / 10
       switch (IconStr.slice(0, 2)) {
         case '01':
           return <WiDaySunny size={IconSize}></WiDaySunny>;
@@ -61,7 +61,7 @@ export default function DayCard(props) {
     let splitDate = formatDate(props.data.dt);
 
     return (
-      <div className={[styles.Card, (props.isActive) ? styles.Selected : styles.unSelected].join(' ')} onClick={props.onCardClick(props.item)}>
+      <div className={[styles.Card, (props.isActive) ? styles.Selected : styles.unSelected].join(' ')} onClick={props.onCardClick(props.keyUsable)}>
         <div className={styles.WeatherDate}>
           <p id={styles.Day}>{splitDate[0]}</p>
           <p id={styles.Date}>{splitDate[1]}</p>

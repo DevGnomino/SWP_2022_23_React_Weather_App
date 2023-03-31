@@ -11,10 +11,16 @@
 }
 .Graphs {
     width: inherit;
+    height: inherit;
     
     display: flex;
     position: relative;
     flex-direction: row;
+
+    overflow: auto;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 0;
 }
 .StaticGraph {
     z-index: 1;
@@ -26,9 +32,9 @@
     box-sizing: border-box;
     border-radius: 4vh;
 
-    overflow: auto; /*make div scrollable*/
-    overflow-y: hidden; /*Hide vertical scrollbar*/
-    scrollbar-width: none; /*make scrollbar invisible*/
+    /*overflow-x: auto; 
+    overflow-y:visible; 
+    scrollbar-width: none;*/ 
 
     display: flex;
     justify-content: flex-start; 
@@ -42,7 +48,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    width: 2000px;
+    width: 2000px; /*2000px*/
     padding-left: 29px;
     top: -10px    
 }

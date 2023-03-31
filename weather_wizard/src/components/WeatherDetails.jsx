@@ -46,7 +46,7 @@ export default function WeatherDetails(props) {
     desc += descSplitted[i][0].toUpperCase() + descSplitted[i].substr(1) + " ";
   }
 
-  console.log(props.fetchData.daily[props.info]);
+  //console.log(props.fetchData.daily[props.info]);
 
   let sunrise = formatDate(props.fetchData.daily[props.info].sunrise);
   let sunset = formatDate(props.fetchData.daily[props.info].sunset);
@@ -57,7 +57,7 @@ export default function WeatherDetails(props) {
   let windSpeed = Math.round (props.fetchData.daily[props.info].wind_speed * 3.6 * 10) / 10;
   let windDir = props.fetchData.daily[props.info].wind_deg;
 
-  const iconSize = 50;
+  const iconSize = props.iconSize; //50
 
   return (
     <div className={styles.DescDiv}>

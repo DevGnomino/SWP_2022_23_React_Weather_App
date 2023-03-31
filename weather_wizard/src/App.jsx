@@ -10,9 +10,10 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [locName, setLocName] = useState("");
-    //Click on daycards
+  const [iconSize, setIconSize] = useState(100);
+   //Click on daycards
   const [dayClicked, setClicked] = useState(0);
-
+  
   //initial data loading
   useEffect(() => {
     if (localStorage.getItem("loc") && localStorage.getItem("lat") && localStorage.getItem("lon")) {
@@ -42,9 +43,29 @@ function App() {
     console.log("fetching data....");
     let data = await GetWeatherFromAPI(lat, lon);
     setWeatherData(data);
-  }
+  };
 
-
+  const ResizeHandler = () => {    
+    try {
+      let pageHeight = document.getElementsByClassName('LocationInnerDiv')[0].clientHeight;
+      //let pageWidth = document.getElementsByClassName('LocationInnerDiv')[0].clientWidth;
+      if(pageHeight < 100) {
+        setIconSize(25);
+      }
+      else if(pageHeight < 200) {
+        setIconSize(50);
+      }
+      else if(pageHeight < 250) {
+        setIconSize(75);
+      }
+      else {
+        setIconSize(100);
+      }
+      //console.log("Servus");
+    } catch (ex) {
+      console.log('App-div is currently unavailable!');
+    }
+  };
 
   const HandleDayCardClick = (dayIndex) => {
     return function () {
@@ -52,6 +73,8 @@ function App() {
       setClicked(dayIndex);
     }
   };
+  
+  window.addEventListener('resize', ResizeHandler);
 
   try {
     return (
@@ -65,12 +88,12 @@ function App() {
               </div>
               <div className='LocationInnerDiv'>
                 {weatherData.daily.map((day, i) => {
-                  return <DayCard key={i} item={i} onCardClick={HandleDayCardClick} data={day} isActive={dayClicked === i} />
+                  return <DayCard key={i} keyUsable={i} onCardClick={HandleDayCardClick} data={day} isActive={dayClicked === i} iconSize={iconSize} />
                 })}
               </div>
             </div>
             <Timeline data={weatherData} />
-            <WeatherDetails fetchData={weatherData} info={dayClicked} />
+            <WeatherDetails fetchData={weatherData} info={dayClicked} iconSize={iconSize}/>
           </div>
         </div>
       </div>
