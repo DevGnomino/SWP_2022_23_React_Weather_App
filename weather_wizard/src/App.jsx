@@ -93,7 +93,7 @@ function App() {
               </div>
             </div>
             <Timeline data={weatherData} />
-            <WeatherDetails fetchData={weatherData} info={dayClicked} iconSize={iconSize}/>
+            <WeatherDetails fetchData={weatherData} info={dayClicked} iconSize={iconSize/2}/>
           </div>
         </div>
       </div>
